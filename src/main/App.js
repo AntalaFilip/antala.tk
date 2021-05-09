@@ -1,21 +1,22 @@
 import './App.css';
+import { makeStyles, Typography } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		
+	},
+	header: {
+		textAlign: 'center'
+	}
+}));
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <div className={classes.header}>
+        <Typography variant="h2">Hey there!</Typography>
+      </div>
     </div>
   );
 }

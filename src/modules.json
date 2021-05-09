@@ -1,0 +1,7 @@
+[
+	{
+		"name": "Projects page",
+		"path": "/projects",
+		"router": "projects/router.js"
+	}
+]
