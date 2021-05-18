@@ -23,6 +23,12 @@ function mainRouter() {
 				<Route exact path="/roadofart">
 					<RoA />
 				</Route>
+				<Route exact path="/gallery">
+
+				</Route>
+				<Route exact path="/gallery/:cid">
+					
+				</Route>
 				<Route>
 					Not found
 				</Route>
