@@ -8,6 +8,9 @@ function Navigator() {
 				<Typography variant="h6">
 					Felixácka výtvarná exhibícia
 				</Typography>
+				<Button href="/projects/felix/vyv-exhibition/">
+					Domov
+				</Button>
 			</Toolbar>
 		</AppBar>
 	)
