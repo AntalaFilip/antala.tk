@@ -23,6 +23,9 @@ function Home() {
 			<Button variant="contained" color="secondary" href="/projects/felix/vyv-exhibition/roadofart">
 				Spustiť cestu umením
 			</Button>
+			<Button variant="contained" href="/projects/felix/vyv-exhibition/gallery">
+				Prejsť do galérie
+			</Button>
 		</div>
 	)
 }
