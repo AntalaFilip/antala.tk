@@ -11,6 +11,8 @@ import {FourZeroFour} from './errors';
 import Home from './home';
 import Nav from './nav';
 import RoA from './roadofart';
+import Gallery from './gallery';
+import ClassGallery from './classgallery';
 
 function mainRouter() {
 	return(
@@ -24,11 +26,9 @@ function mainRouter() {
 					<RoA />
 				</Route>
 				<Route exact path="/gallery">
-
+					<Gallery />
 				</Route>
-				<Route exact path="/gallery/:cid">
-					
-				</Route>
+				<Route exact path="/gallery/:cid" children={<ClassGallery />} />
 				<Route>
 					Not found
 				</Route>
