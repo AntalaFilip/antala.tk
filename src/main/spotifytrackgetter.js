@@ -42,7 +42,8 @@ function RenderPage() {
 		SpotifyApi.defaults.headers.common['Authorization'] = `Bearer ${cookies.spotifyAuth}`;
 		try {
 			const artistres = await SpotifyApi.get('/search', { params: { query: input, type: 'artist' } });
-			const albumsres = await SpotifyApi.get(`/artists/${artistres.data.artists.items[0].id}/albums`, { params: { limit: 50, market: 'SK', include_groups: 'album,single' } });
+			const artist = artistres.data.artists.items[0];
+			const albumsres = await SpotifyApi.get(`/artists/${artist.id}/albums`, { params: { limit: 50, market: 'SK', include_groups: 'album,single' } });
 			const albums = albumsres.data.items;
 			const rawtracks = [];
 			for (let i = 0; i < albums.length; i++) {
@@ -65,7 +66,7 @@ function RenderPage() {
 			let rawduration = 0;
 			tracks.forEach(tr => duration += tr.duration);
 			rawtracks.forEach(rtr => rawduration += rtr.duration);
-			setData({ tracks, duration, rawduration, rawtracks });
+			setData({ tracks, duration, rawduration, rawtracks, artist });
 			setLoading(false);
 		}
 		catch (err) {
@@ -120,7 +121,7 @@ function RenderPage() {
 					{error && <Typography color="error">{error}</Typography>}
 					{
 						<>
-							{data && <>Found {showDuplicates ? data.rawtracks.length : data.tracks.length} tracks by {input}, length: {Math.floor(((showDuplicates ? data.rawduration : data.duration) / 1000) / 60)}min</>}
+							{data && <>Found {showDuplicates ? data.rawtracks.length : data.tracks.length} tracks by {data.artist.name}, length: {Math.floor(((showDuplicates ? data.rawduration : data.duration) / 1000) / 60)}min</>}
 							<div style={{ height: '500px', margin: '20px', display: 'flex' }}>
 								<div style={{ flexGrow: 1 }}>
 									<DataGrid
@@ -145,7 +146,7 @@ function RenderPage() {
 					{process.env.NODE_ENV === 'development' &&
 						<a href={`https://accounts.spotify.com/en/authorize?client_id=042bbeff35b54d618b97de6ed9e16bf0&response_type=token&redirect_uri=${encodeURI('http://localhost:3000/main/trackgetter/authorize')}`}>Log in through Spotify!</a>}
 					{process.env.NODE_ENV === 'production' &&
-						<a href={`https://accounts.spotify.com/en/authorize?client_id=042bbeff35b54d618b97de6ed9e16bf0&response_type=token&redirect_uri=${encodeURI('http://filipantala.ddns.net/main/trackgetter/authorize')}`}>Log in through Spotify!</a>}
+						<a href={`https://accounts.spotify.com/en/authorize?client_id=042bbeff35b54d618b97de6ed9e16bf0&response_type=token&redirect_uri=${encodeURI('http://antala.tk/main/trackgetter/authorize')}`}>Log in through Spotify!</a>}
 				</>}
 		</div>
 	);
