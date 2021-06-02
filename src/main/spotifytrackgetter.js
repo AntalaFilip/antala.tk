@@ -5,6 +5,7 @@ import { useCookies } from 'react-cookie';
 import { Button, FormControlLabel, Switch, TextField, Typography } from '@material-ui/core';
 import { DataGrid, GridToolbar } from '@material-ui/data-grid';
 import { grey } from '@material-ui/core/colors';
+import AError from '../errors/Error';
 
 const SpotifyApi = axios.create({ baseURL: 'https://api.spotify.com/v1' });
 
@@ -43,6 +44,7 @@ function RenderPage() {
 		try {
 			const artistres = await SpotifyApi.get('/search', { params: { query: input, type: 'artist' } });
 			const artist = artistres.data.artists.items[0];
+			if (!artist) throw new AError('Artist not found', 'SPTNOARTIST');
 			const albumsres = await SpotifyApi.get(`/artists/${artist.id}/albums`, { params: { limit: 50, market: 'SK', include_groups: 'album,single' } });
 			const albums = albumsres.data.items;
 			const rawtracks = [];
