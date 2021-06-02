@@ -1,38 +1,7 @@
-import React from 'react';
-import { Typography, Card, CardContent, CardActions, Button, makeStyles, Divider } from '@material-ui/core';
-
-const clss = [
-    {
-        id: 'plameniaky',
-        name: 'Plameniaky',
-        desc: <></>
-    },
-    {
-        id: 'sovy',
-        name: 'Sovy',
-        desc: <></>
-    },
-    {
-        id: 'vydry',
-        name: 'Vydry',
-        desc: <></>
-    },
-    {
-        id: 'vazky',
-        name: 'Vážky',
-        desc: <></>
-    },
-    {
-        id: 'pandy',
-        name: 'Pandy',
-        desc: <></>
-    },
-    {
-        id: 'koaly',
-        name: 'Koaly',
-        desc: <></>
-    },
-];
+import React, { useState } from 'react';
+import { Typography, Card, CardContent, CardActions, Button, makeStyles, Divider, CircularProgress } from '@material-ui/core';
+import axios from 'axios';
+const Axios = axios.create({baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3020' : 'https://vyvapi.antala.tk'});
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -56,13 +25,28 @@ const useStyles = makeStyles(theme => ({
 function Gallery() {
     const classes = useStyles();
 
-    console.log(clss);
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState();
+
+    if (!data) {
+        Axios.get('/gallery')
+            .then(res => {
+                if (res.status === 200) {
+                    setData(res.data.items);
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            })
+    }
 
     return (
         <div className={classes.root}>
             <Typography className={classes.header} variant="h3">Triedne galérie:</Typography>
-            <div className={classes.cards}>
-                {clss.map(cls => (
+            {loading ? <CircularProgress /> : <div className={classes.cards}>
+                {data.map(cls => (
                     <Card key={cls.id} className={classes.card} raised>
                         <CardContent>
                             <Typography variant="h6" color="textSecondary">
@@ -80,7 +64,7 @@ function Gallery() {
                         </CardActions>
                     </Card>
                 ))}
-            </div>
+            </div>}
         </div>
     )
 }
