@@ -28,7 +28,7 @@ const ADD_PLAYGROUND_ADDRESS = gql`
 			}
 		}
 	}
-`
+`;
 const ADD_PLAYGROUND_COORDS = gql`
 	mutation AddPlaygroundByCoords($name: String!, $desc: String!, $ctgid: [Int!]!, $facid: [Int!]!, $lat: Float!, $long: Float!) {
 		addPlaygroundByCoords(base: {name: $name, description: $desc, categoryIds: $ctgid, facilityIds: $facid}, location: {latitude: $lat, longtitude: $long}) {
@@ -52,7 +52,7 @@ const ADD_PLAYGROUND_COORDS = gql`
 			}
 		}
 	}
-`
+`;
 
 const GET_DATA = gql`
 	query GetAddData {
@@ -65,7 +65,7 @@ const GET_DATA = gql`
 			name
 		}
 	}
-`
+`;
 
 const useFormStyles = makeStyles((theme) => ({
 	selectControl: {
@@ -81,11 +81,11 @@ const useFormStyles = makeStyles((theme) => ({
 		margin: 2,
 	},
 	formPaper: {
-		textAlign: 'center'
+		textAlign: 'center',
 	},
 	textField: {
 		marginBottom: theme.spacing(2),
-	}
+	},
 }));
 
 function AddPlaygroundByAddress({ open, setOpen }) {
@@ -108,7 +108,7 @@ function AddPlaygroundByAddress({ open, setOpen }) {
 	const [stepErr, setStepErr] = useState([]);
 	const classes = useFormStyles();
 
-	if (loading) return <Backdrop open={loading}><CircularProgress color="inherit" /></Backdrop>
+	if (loading) return <Backdrop open={loading}><CircularProgress color="inherit" /></Backdrop>;
 
 	if (open === true) {
 		if (!authenticated) {
@@ -143,10 +143,10 @@ function AddPlaygroundByAddress({ open, setOpen }) {
 
 	const handleCategory = (e) => {
 		setSelectedCategories(e.target.value);
-	}
+	};
 	const handleFacility = (e) => {
 		setSelectedFacilities(e.target.value);
-	}
+	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const ctgs = selectedCategories.map(ctg => parseInt((qdata.categories.find(cat => cat.name === ctg).id)));
@@ -164,7 +164,7 @@ function AddPlaygroundByAddress({ open, setOpen }) {
 		});
 		setStepErr([]);
 		handleNext();
-	}
+	};
 	const handleNext = () => {
 		const validity = document.getElementById('add-playground-form').checkValidity();
 		if (validity || process.env.NODE_ENV === 'development') {
@@ -180,14 +180,14 @@ function AddPlaygroundByAddress({ open, setOpen }) {
 		if (!validity) {
 			setStepErr([...stepErr, step]);
 		}
-	}
+	};
 	const handleBack = () => {
 		const errInd = stepErr.indexOf(step - 1);
 		if (errInd !== -1) {
 			stepErr.splice(errInd, 1);
 		}
 		setStep(step - 1);
-	}
+	};
 
 	return (
 		<Dialog open={open} onClose={() => setOpen(false)}>
@@ -362,7 +362,7 @@ function AddPlaygroundByAddress({ open, setOpen }) {
 				}
 			</DialogActions>
 		</Dialog>
-	)
+	);
 }
 
 export default AddPlaygroundByAddress;

@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	heading: {
 		textAlign: 'center',
-		marginTop: theme.spacing(.5),
+		marginTop: theme.spacing(0.5),
 		marginBottom: theme.spacing(1),
 	},
 	description: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 	},
 	popover: {
 		padding: theme.spacing(1),
-	}
+	},
 }));
 
 const cards = [
@@ -56,12 +56,12 @@ const cards = [
 					color: 'secondary',
 					rel: "noreferrer",
 					target: "_blank",
-				}
+				},
 			},
 			{
 				name: 'Learn more',
 				url: '/main/projects/felixmuzikal',
-			}
+			},
 		],
 		chips: ['onHold'],
 	},
@@ -78,8 +78,8 @@ const cards = [
 					variant: 'outlined',
 					color: 'secondary',
 					rel: 'noreferrer',
-					target: '_blank'
-				}
+					target: '_blank',
+				},
 			},
 			{
 				name: 'Source code',
@@ -87,8 +87,8 @@ const cards = [
 				props: {
 					rel: 'noreferrer',
 					target: '_blank',
-				}
-			}
+				},
+			},
 		],
 		chips: ['noLongerMaintained'],
 	},
@@ -106,7 +106,7 @@ const cards = [
 					variant: 'outlined',
 					color: 'secondary',
 					rel: 'noreferrer',
-					target: '_blank'
+					target: '_blank',
 				},
 			},
 			{
@@ -114,7 +114,7 @@ const cards = [
 				url: 'https://github.com/AntalaFilip/FLL-api',
 				props: {
 					rel: 'noreferrer',
-					target: '_blank'
+					target: '_blank',
 				},
 			},
 			{
@@ -122,9 +122,9 @@ const cards = [
 				url: 'https://github.com/AntalaFilip/antalafilip.github.io',
 				props: {
 					rel: 'noreferrer',
-					target: '_blank'
+					target: '_blank',
 				},
-			}
+			},
 		],
 		chips: ['inProgress'],
 	},
@@ -138,7 +138,7 @@ const cards = [
 			I'm remaking it as an online game in Unity, allowing global multiplayer, making an extended version for 6 players
 			and potentially adding some more fun stuff to it</>,
 		links: [],
-		chips: ['onHold']
+		chips: ['onHold'],
 	},
 	{
 		name: `This website | JavaScript | EN`,
@@ -158,11 +158,11 @@ const cards = [
 				url: '/main/trackgetter',
 				props: {
 					color: 'secondary',
-					variant: 'contained'
-				}
-			}
+					variant: 'contained',
+				},
+			},
 		],
-		chips: ['finished']
+		chips: ['finished'],
 	},
 	{
 		name: `DisInteractions | JavaScript | EN`,
@@ -175,10 +175,9 @@ const cards = [
 				url: 'https://github.com/AntalaFilip/DisInteractionsJS',
 			},
 		],
-		chips: ['planned']
-	}
-]
-
+		chips: ['planned'],
+	},
+];
 
 
 function Projects() {
@@ -190,11 +189,11 @@ function Projects() {
 	const handlePopoverOpen = (pid) => (e) => {
 		setAnchorEl(e.currentTarget);
 		setPopoverId(pid);
-	}
+	};
 	const handlePopoverClose = (e) => {
 		setAnchorEl(null);
 		setPopoverId(null);
-	}
+	};
 
 	const popperOpen = Boolean(anchorEl);
 
@@ -263,7 +262,7 @@ function Projects() {
 					avatar={<CancelOutlined />}
 					onClick={handlePopoverOpen("abandoned")}
 				/>
-			)
+			),
 		},
 		onHold: {
 			id: 'onhold',
@@ -280,7 +279,7 @@ function Projects() {
 					avatar={<Pause />}
 					onClick={handlePopoverOpen("onHold")}
 				/>
-			)
+			),
 		},
 		planned: {
 			id: 'planned',
@@ -297,9 +296,9 @@ function Projects() {
 					avatar={<Schedule />}
 					onClick={handlePopoverOpen("planned")}
 				/>
-			)
-		}
-	}
+			),
+		},
+	};
 
 	const curtext = chips[popoverId] ? chips[popoverId].text : null;
 	return (
@@ -346,7 +345,7 @@ function Projects() {
 			</div>
 
 		</div>
-	)
+	);
 }
 
 export default Projects;

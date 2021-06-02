@@ -2,7 +2,7 @@ import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, Circular
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-const Axios = axios.create({baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3020' : 'https://vyvapi.antala.tk'});
+const Axios = axios.create({ baseURL: process.env.NODE_ENV === 'development' ? 'http://localhost:3020' : 'https://vyvapi.antala.tk' });
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -52,39 +52,39 @@ function ClassGallery() {
 			</Typography>
 			{
 				loading
-			? 
-				<CircularProgress />
-			: 
-				<div className={classes.imgs}>
-					{data && data.map(img => (
-						<Card key={img.id}>
-							<CardHeader
-								title={img.name}
-								subheader={img.author}
-							/>
-							<CardMedia
-								component="img"
-								alt={img.id}
-								className={classes.img}
-								image={img.uri}
-								title={img.name}
-							/>
-							<CardContent>
-								<Typography variant="body1" color="textSecondary">
-									{img.desc}
-								</Typography>
-							</CardContent>
-							<CardActions>
-								<Button href={img.uri}>
-									Zobraziť originál
-								</Button>
-							</CardActions>
-						</Card>
-					))}
-				</div>
+					?
+					<CircularProgress />
+					:
+					<div className={classes.imgs}>
+						{data && data.map(img => (
+							<Card key={img.id}>
+								<CardHeader
+									title={img.name}
+									subheader={img.author}
+								/>
+								<CardMedia
+									component="img"
+									alt={img.id}
+									className={classes.img}
+									image={img.uri}
+									title={img.name}
+								/>
+								<CardContent>
+									<Typography variant="body1" color="textSecondary">
+										{img.desc}
+									</Typography>
+								</CardContent>
+								<CardActions>
+									<Button href={img.uri}>
+										Zobraziť originál
+									</Button>
+								</CardActions>
+							</Card>
+						))}
+					</div>
 			}
 		</div>
-	)
+	);
 }
 
 export default ClassGallery;

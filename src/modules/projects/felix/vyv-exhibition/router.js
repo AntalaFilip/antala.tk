@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { 
+import {
 	BrowserRouter as Router,
 	Switch,
 	Route,
-} from 'react-router-dom'
+} from 'react-router-dom';
 
-import {FourZeroFour} from './errors';
+import { FourZeroFour } from './errors';
 
 import Home from './home';
 import Nav from './nav';
@@ -14,8 +14,8 @@ import RoA from './roadofart';
 import Gallery from './gallery';
 import ClassGallery from './classgallery';
 
-function mainRouter() {
-	return(
+function MainRouter() {
+	return (
 		<Router basename="/projects/felix/vyv-exhibition">
 			<Nav />
 			<Switch>
@@ -34,7 +34,7 @@ function mainRouter() {
 				</Route>
 			</Switch>
 		</Router>
-	)
+	);
 }
 
-export default mainRouter;
+export default MainRouter;

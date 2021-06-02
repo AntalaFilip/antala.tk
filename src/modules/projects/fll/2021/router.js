@@ -1,8 +1,8 @@
 import React from 'react';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context'
+import { setContext } from '@apollo/client/link/context';
 import { ApolloProvider } from '@apollo/client/react';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { SnackbarProvider } from 'notistack';
 import cookie from 'cookie';
 
@@ -31,16 +31,16 @@ const authLink = setContext((_, { headers }) => {
 		headers: {
 			...headers,
 			authorization: token ? token : '',
-		}
-	}
-})
-const client = new ApolloClient({ link: authLink.concat(httplink), cache: new InMemoryCache() })
+		},
+	};
+});
+const client = new ApolloClient({ link: authLink.concat(httplink), cache: new InMemoryCache() });
 
 function MainRouter() {
 	const theme = createMuiTheme({
 		palette: {
-			type: 'light'
-		}
+			type: 'light',
+		},
 	});
 
 	return (
@@ -67,6 +67,6 @@ function MainRouter() {
 				</SnackbarProvider>
 			</ThemeProvider>
 		</ApolloProvider>
-	)
+	);
 }
 export default MainRouter;

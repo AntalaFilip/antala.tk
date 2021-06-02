@@ -18,7 +18,7 @@ function Navigator() {
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
-	)
+	);
 }
 
 export default Navigator;

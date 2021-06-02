@@ -13,7 +13,7 @@ function Navigator() {
 				</Button>
 			</Toolbar>
 		</AppBar>
-	)
+	);
 }
 
 export default Navigator;

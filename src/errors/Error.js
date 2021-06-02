@@ -1,8 +1,8 @@
 class AError extends Error {
 	/**
-	 * 
-	 * @param {string} message 
-	 * @param {string | number} code 
+	 *
+	 * @param {string} message
+	 * @param {string | number} code
 	 */
 	constructor(message, code) {
 		super(message);

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	title: {
 		flexGrow: 0.02,
-	}
+	},
 }));
 
 
@@ -23,7 +23,7 @@ function Navigator() {
 	const { state, logout, showAuth } = useContext(AuthContext);
 	const { authenticated, data, loading } = state;
 	const [addPgOpen, setAddPgOpen] = useState(false);
-	if (loading) return 'Loading...'
+	if (loading) return 'Loading...';
 	return (
 		<div className={classes.root}>
 			<AppBar position="static">
@@ -47,21 +47,21 @@ function Navigator() {
 			</AppBar>
 			<AddPlaygroundByAddress open={addPgOpen} setOpen={setAddPgOpen} />
 		</div>
-	)
+	);
 }
 
 function UserMenu({ data, logout }) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const handleProfileMenuOpen = (event) => {
 		setAnchorEl(event.currentTarget);
-	}
+	};
 	const handleMenuClose = () => {
 		setAnchorEl(null);
-	}
+	};
 
 	const isMenuOpen = Boolean(anchorEl);
 
-	const menuId = 'account-menu'
+	const menuId = 'account-menu';
 	const renderMenu = (
 		<Menu
 			anchorEl={anchorEl}
@@ -79,7 +79,7 @@ function UserMenu({ data, logout }) {
 			<MenuItem>Profile</MenuItem>
 			<MenuItem onClick={() => logout(true)}>Logout</MenuItem>
 		</Menu>
-	)
+	);
 
 	return (
 		<div>
@@ -98,7 +98,7 @@ function UserMenu({ data, logout }) {
 			{renderMenu}
 		</div>
 
-	)
+	);
 }
 
 export default Navigator;

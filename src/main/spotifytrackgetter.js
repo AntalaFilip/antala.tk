@@ -6,7 +6,7 @@ import { Button, FormControlLabel, Switch, TextField, Typography } from '@materi
 import { DataGrid, GridToolbar } from '@material-ui/data-grid';
 import { grey } from '@material-ui/core/colors';
 
-const SpotifyApi = axios.create({ baseURL: 'https://api.spotify.com/v1' })
+const SpotifyApi = axios.create({ baseURL: 'https://api.spotify.com/v1' });
 
 function RenderPage() {
 	const [cookies] = useCookies();
@@ -17,8 +17,8 @@ function RenderPage() {
 	const [showDuplicates, setShowDuplicates] = useState(false);
 
 	function msToMinSec(millis) {
-		var minutes = Math.floor(millis / 60000);
-		var seconds = ((millis % 60000) / 1000).toFixed(0);
+		const minutes = Math.floor(millis / 60000);
+		const seconds = ((millis % 60000) / 1000).toFixed(0);
 		return (
 			seconds === 60 ?
 				(minutes + 1) + ":00" :
@@ -30,8 +30,8 @@ function RenderPage() {
 		{ field: 'track', headerName: 'Track name', flex: 1.5 },
 		{ field: 'artists', headerName: 'Artists', flex: 1 },
 		{ field: 'album', headerName: 'Album', flex: 1 },
-		{ field: 'duration', headerName: 'Duration', flex: 0.5 }
-	]
+		{ field: 'duration', headerName: 'Duration', flex: 0.5 },
+	];
 
 	const submit = async (e) => {
 		e.preventDefault();
@@ -48,11 +48,15 @@ function RenderPage() {
 			for (let i = 0; i < albums.length; i++) {
 				const id = albums[i].id;
 				const tracksres = await SpotifyApi.get(`/albums/${id}/tracks`);
-				const data = tracksres.data.items;
-				const mapped = data.map(track => ({ name: track.name, id: track.id, href: track.external_urls.spotify, artists: track.artists, album: { name: albums[i].name, href: albums[i].external_urls.spotify }, duration: track.duration_ms }));
+				const trdata = tracksres.data.items;
+				const mapped = trdata.map(track => ({ name: track.name, id: track.id, href: track.external_urls.spotify, artists: track.artists, album: { name: albums[i].name, href: albums[i].external_urls.spotify }, duration: track.duration_ms }));
 				rawtracks.push(...mapped);
 			}
-			rawtracks.sort((a, b) => { if (a.name < b.name) return -1; if (a.name > b.name) return 1; return 0; });
+			rawtracks.sort((a, b) => {
+				if (a.name < b.name) return -1;
+				if (a.name > b.name) return 1;
+				return 0;
+			});
 			const tracks = rawtracks.reduce((arr, tr) => {
 				if (!arr.find(val => val.name === tr.name)) arr.push(tr);
 				return arr;
@@ -64,11 +68,11 @@ function RenderPage() {
 			setData({ tracks, duration, rawduration, rawtracks });
 			setLoading(false);
 		}
-		catch (e) {
-			setData('Something went wrong! Sorry! ' + e);
+		catch (err) {
+			setData('Something went wrong! Sorry! ' + err);
 			setLoading(false);
 		}
-	}
+	};
 
 	const renderTableRow = (track) => (
 		{
@@ -78,7 +82,7 @@ function RenderPage() {
 			album: track.album.name,
 			duration: msToMinSec(track.duration),
 		}
-	)
+	);
 
 	return (
 		<div style={{ textAlign: 'center' }}>
@@ -90,7 +94,7 @@ function RenderPage() {
 						<TextField
 							variant="standard"
 							color="secondary"
-							style={{backgroundColor: grey[200]}}
+							style={{ backgroundColor: grey[200] }}
 							type="text"
 							value={input}
 							onChange={e => setInput(e.target.value)}
@@ -117,19 +121,19 @@ function RenderPage() {
 					{
 						<>
 							{data && <>Found {showDuplicates ? data.rawtracks.length : data.tracks.length} tracks by {input}, length: {Math.floor(((showDuplicates ? data.rawduration : data.duration) / 1000) / 60)}min</>}
-							<div style={{height: '500px', margin: '20px', display: 'flex'}}>
-								<div style={{flexGrow: 1}}>
+							<div style={{ height: '500px', margin: '20px', display: 'flex' }}>
+								<div style={{ flexGrow: 1 }}>
 									<DataGrid
 										columns={columns}
 										rows={data ? showDuplicates ? data.rawtracks.map(renderTableRow) : data.tracks.map(renderTableRow) : []}
-										components={{Toolbar: GridToolbar}}
+										components={{ Toolbar: GridToolbar }}
 										loading={loading}
 										checkboxSelection
 									/>
 								</div>
-								
+
 							</div>
-							
+
 						</>
 					}
 				</>
@@ -144,11 +148,11 @@ function RenderPage() {
 						<a href={`https://accounts.spotify.com/en/authorize?client_id=042bbeff35b54d618b97de6ed9e16bf0&response_type=token&redirect_uri=${encodeURI('http://filipantala.ddns.net/main/trackgetter/authorize')}`}>Log in through Spotify!</a>}
 				</>}
 		</div>
-	)
+	);
 }
 
 function Authorize() {
-	//eslint-disable-next-line
+	// eslint-disable-next-line
 	const [cookies, setCookie] = useCookies();
 	const query = useQuery();
 	const hash = parseUrlHash();
@@ -166,10 +170,10 @@ function useQuery() {
 }
 
 function parseUrlHash() {
-	var hash = window.location.hash.substr(1);
+	const hash = window.location.hash.substr(1);
 
-	var result = hash.split('&').reduce(function (res, item) {
-		var parts = item.split('=');
+	const result = hash.split('&').reduce(function(res, item) {
+		const parts = item.split('=');
 		res[parts[0]] = parts[1];
 		return res;
 	}, {});
@@ -188,7 +192,7 @@ function Router() {
 				</Route>
 			</rSwitch>
 		</BrowserRouter>
-	)
+	);
 }
 
 export default Router;

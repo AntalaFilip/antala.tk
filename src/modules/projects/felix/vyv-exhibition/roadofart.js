@@ -3,9 +3,9 @@ import React from 'react';
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		display: 'flex'
-	}
-}))
+		display: 'flex',
+	},
+}));
 
 function RoadOfArt() {
 	const classes = useStyles();
@@ -16,6 +16,6 @@ function RoadOfArt() {
 				test
 			</Paper>
 		</div>
-	)
+	);
 }
 export default RoadOfArt;

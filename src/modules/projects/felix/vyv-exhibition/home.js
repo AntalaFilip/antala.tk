@@ -3,11 +3,11 @@ import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
 	rootDiv: {
-		textAlign: 'center'
+		textAlign: 'center',
 	},
 	headerRoot: {
 		marginTop: '0.2em',
-	}
+	},
 }));
 
 function Home() {
@@ -18,7 +18,7 @@ function Home() {
 				Vitajte na webe Felixáckej výtvarnej exhibície!
 			</Typography>
 			<Typography variant="h4">
-				
+
 			</Typography>
 			<Button variant="contained" color="secondary" href="/projects/felix/vyv-exhibition/roadofart">
 				Spustiť cestu umením
@@ -27,7 +27,7 @@ function Home() {
 				Prejsť do galérie
 			</Button>
 		</div>
-	)
+	);
 }
 
 export default Home;

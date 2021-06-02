@@ -1,5 +1,5 @@
 import { Button, Link, Typography } from "@material-ui/core";
-import { FindInPage } from '@material-ui/icons'
+import { FindInPage } from '@material-ui/icons';
 
 function Home() {
 	return (
@@ -10,6 +10,6 @@ function Home() {
 				Vyhľadať ihriská
 			</Button>
 		</div>
-	)
+	);
 }
 export default Home;

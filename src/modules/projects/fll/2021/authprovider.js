@@ -4,15 +4,15 @@ import { withCookies, Cookies } from 'react-cookie';
 import axios from 'axios';
 import { withSnackbar } from 'notistack';
 import AError from '../../../../errors/Error';
-import { EventEmitter } from 'events'
+import { EventEmitter } from 'events';
 import AuthDialog from './login';
 
 export const AuthContext = createContext();
 
-const AuthorizationApi = axios.create({ baseURL: 'http://188.167.224.122:4000/auth' })
+const AuthorizationApi = axios.create({ baseURL: 'http://188.167.224.122:4000/auth' });
 class AuthProvider extends React.Component {
 	static propTypes = {
-		cookies: instanceOf(Cookies).isRequired
+		cookies: instanceOf(Cookies).isRequired,
 	};
 	constructor(props) {
 		super(props);
@@ -21,7 +21,7 @@ class AuthProvider extends React.Component {
 			authenticated: false,
 			data: null,
 			showAuthDialog: false,
-		}
+		};
 	}
 	componentDidMount() {
 		this.auth();
@@ -46,7 +46,7 @@ class AuthProvider extends React.Component {
 			}
 		}
 		catch {
-			console.log('B')
+			console.log('B');
 			throw new AError();
 		}
 	}
@@ -73,8 +73,8 @@ class AuthProvider extends React.Component {
 		catch (error) {
 			const res = error.response;
 			if (res.status === 400 || res.status === 500) {
-				const error = res.data.error;
-				throw new AError(error.message, error.code);
+				const err = res.data.error;
+				throw new AError(err.message, err.code);
 			}
 		}
 	}
@@ -95,7 +95,9 @@ class AuthProvider extends React.Component {
 					});
 					this.eventManager.emit('auth', true);
 				}
-				else this.logout(false);
+				else {
+					this.logout(false);
+				}
 			}
 			catch {
 				this.logout(false);
@@ -126,13 +128,13 @@ class AuthProvider extends React.Component {
 			register: this.register,
 			events: this.eventManager,
 			showAuth: this.showAuthDialog,
-		}
+		};
 		return (
 			<AuthContext.Provider value={value}>
 				<AuthDialog />
 				{this.props.children}
 			</AuthContext.Provider>
-		)
+		);
 	}
 }
 

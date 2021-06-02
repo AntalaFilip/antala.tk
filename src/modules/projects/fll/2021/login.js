@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 	input: {
 		marginBottom: theme.typography.pxToRem(6),
 		marginTop: theme.typography.pxToRem(6),
-	}
+	},
 }));
 
 function RenderAuthDialog() {
@@ -58,7 +58,7 @@ function RenderAuthDialog() {
 		setTosError();
 		setErrorText();
 		setRegisterMode(false);
-	}
+	};
 
 	const handleLogin = () => {
 		setErrorText();
@@ -83,7 +83,7 @@ function RenderAuthDialog() {
 			});
 
 		setLoading(true);
-	}
+	};
 
 	const handleRegister = () => {
 		setErrorText();
@@ -112,7 +112,7 @@ function RenderAuthDialog() {
 					setErrorText(err.message);
 				}
 			});
-	}
+	};
 
 	return (
 		<Dialog
@@ -216,15 +216,15 @@ function RenderAuthDialog() {
 				{registerMode ?
 					<Button color="primary" variant="contained" onClick={handleRegister} disabled={loading}>
 						Register
-				</Button>
+					</Button>
 					:
 					<Button color="primary" variant="contained" onClick={handleLogin} disabled={loading}>
 						Login
-				</Button>}
+					</Button>}
 				{loading && <CircularProgress size={24} className={classes.buttonProgress} />}
 			</DialogActions>
 		</Dialog>
-	)
+	);
 }
 
 export default RenderAuthDialog;

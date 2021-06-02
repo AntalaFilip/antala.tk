@@ -1,5 +1,3 @@
-//#region IMPORTS
-
 // React
 import React from 'react';
 
@@ -18,7 +16,6 @@ import Projects from './Projects';
 import BaseApp from './App';
 import Nav from './nav';
 
-//#endregion
 
 function mainRouter() {
 	return(
@@ -39,7 +36,7 @@ function mainRouter() {
 				</Route>
 			</Switch>
 		</Router>
-	)
+	);
 }
 
 export default mainRouter;
