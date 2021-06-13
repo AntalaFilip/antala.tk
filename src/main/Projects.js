@@ -101,7 +101,7 @@ const cards = [
 		links: [
 			{
 				name: 'Website',
-				url: 'http://filipantala.ddns.net/projects/fll/2021',
+				url: '/projects/fll/2021',
 				props: {
 					variant: 'outlined',
 					color: 'secondary',
