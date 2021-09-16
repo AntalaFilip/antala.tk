@@ -19,7 +19,11 @@ const useStyles = makeStyles(theme => ({
 		justifyContent: 'center',
 	},
 	img: {
-		maxWidth: 500,
+		maxWidth: 450,
+	},
+	card: {
+		marginLeft: theme.spacing(1),
+		marginRight: theme.spacing(1),
 	},
 }));
 
@@ -57,7 +61,7 @@ function ClassGallery() {
 					:
 					<div className={classes.imgs}>
 						{data && data.map(img => (
-							<Card key={img.id}>
+							<Card key={img.id} className={classes.card}>
 								<CardHeader
 									title={img.name}
 									subheader={img.author}
