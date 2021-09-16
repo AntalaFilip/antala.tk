@@ -104,7 +104,7 @@ const cards = [
 		links: [
 			{
 				name: 'Website',
-				url: 'https://antala.tk/projects/fll/2021',
+				url: '/projects/fll/2021',
 				props: {
 					variant: 'outlined',
 					color: 'secondary',
