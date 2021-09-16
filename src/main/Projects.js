@@ -61,6 +61,9 @@ const cards = [
 			{
 				name: 'Learn more',
 				url: '/main/projects/felixmuzikal',
+				props: {
+					disabled: true,
+				},
 			},
 		],
 		chips: ['onHold'],
@@ -73,7 +76,7 @@ const cards = [
 		links: [
 			{
 				name: 'Management page',
-				url: 'https://felixdiscord.felixmuzikal.sk',
+				url: 'https://felixbot.antala.tk',
 				props: {
 					variant: 'outlined',
 					color: 'secondary',
@@ -90,7 +93,7 @@ const cards = [
 				},
 			},
 		],
-		chips: ['noLongerMaintained'],
+		chips: ['inProgress'],
 	},
 	{
 		name: 'FLL - 2021 | JavaScript | SK',
@@ -101,7 +104,7 @@ const cards = [
 		links: [
 			{
 				name: 'Website',
-				url: 'http://filipantala.ddns.net/projects/fll/2021',
+				url: 'https://antala.tk/projects/fll/2021',
 				props: {
 					variant: 'outlined',
 					color: 'secondary',
@@ -119,14 +122,14 @@ const cards = [
 			},
 			{
 				name: 'Web source',
-				url: 'https://github.com/AntalaFilip/antalafilip.github.io',
+				url: 'https://github.com/AntalaFilip/antala.tk/tree/source/src/modules/projects/fll/2021',
 				props: {
 					rel: 'noreferrer',
 					target: '_blank',
 				},
 			},
 		],
-		chips: ['inProgress'],
+		chips: ['onHold'],
 	},
 	{
 		name: `MDGA | Unity C# | EN`,
@@ -150,7 +153,7 @@ const cards = [
 	{
 		name: `Spotify track getter | JavaScript | EN`,
 		description: <>Simple one-page site which authorizes the user into the Spotify API, gets all tracks from a given artist,
-		 can filter duplicates and prints them in a convenient table with sorting, filtering and (broken) CSV export.</>,
+		 can filter duplicates and prints them in a convenient table with sorting, filtering and even export to CSV.</>,
 		category: ['programming', 'javascript'],
 		links: [
 			{
@@ -165,14 +168,18 @@ const cards = [
 		chips: ['finished'],
 	},
 	{
-		name: `DisInteractions | JavaScript | EN`,
-		description: <>NodeJS module (maybe built on the DiscordJS framework) for using Discord's new Interactions (slash commands).
-			Should include everything from registering commands, running a http server to listen for commands, parse them and so on.</>,
-		category: ['programming', 'javascript'],
+		name: `ACSCTL | NodeJS | EN`,
+		description: <>ACSCTL is a big planned project of mine. It is meant to be a fully-fledged multipart security system written in NodeJS.
+		It should be a scalable, secure and modular system, with newer graphics and features. Consisting of a backend application,
+		frontend application ("terminals"), bash command-line application, web administration console and monitoring.</>,
+		category: ['programming', 'javascript', 'nodejs', 'large'],
 		links: [
 			{
-				name: 'Source',
-				url: 'https://github.com/AntalaFilip/DisInteractionsJS',
+				name: 'Find out more',
+				url: 'https://acsctl.antala.tk/',
+				props: {
+					disabled: true,
+				},
 			},
 		],
 		chips: ['planned'],

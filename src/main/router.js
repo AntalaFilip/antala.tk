@@ -15,10 +15,11 @@ import Projects from './Projects';
 // Others
 import BaseApp from './App';
 import Nav from './nav';
+import Footer from './footer';
 
 
 function mainRouter() {
-	return(
+	return (
 		<Router basename="/main">
 			<Nav />
 			<Switch>
@@ -35,6 +36,7 @@ function mainRouter() {
 					{/* Route to 404 */}
 				</Route>
 			</Switch>
+			<Footer />
 		</Router>
 	);
 }

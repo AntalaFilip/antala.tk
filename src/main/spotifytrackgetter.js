@@ -81,7 +81,7 @@ function RenderPage() {
 		{
 			id: track.id,
 			track: track.name,
-			artists: track.artists.map(artist => (artist.name)),
+			artists: track.artists.map(artist => (artist.name)).join(' & '),
 			album: track.album.name,
 			duration: msToMinSec(track.duration),
 		}
