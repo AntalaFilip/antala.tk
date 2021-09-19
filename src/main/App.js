@@ -34,7 +34,7 @@ function App() {
 					<br/>I do lots of stuff, but mostly work with NodeJS.
 					<br/>Check out my amazing <Link href="/main/trackgetter">Spotify track getter</Link>.
 					<br/>Be hypnotized by shrinking paragraphs.
-					<br/>Look! They're gettings shorter!
+					<br/>Look! They're getting shorter!
 					<br/>Yes, I'm in high school.
 					<br/>Definitely mature.
 					<br/>Anyway, byee.
