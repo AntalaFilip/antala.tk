@@ -19,7 +19,7 @@ function Footer() {
 	return (
 		<div className={classes.root}>
 			<Typography className={classes.text}>
-				&copy; 2021 Filip Antala | <Link color="primary" href="mailto:filip.antala@felixmuzikal.sk">filip.antala@felixmuzikal.sk</Link>
+				&copy; 2021 Filip Antala | <Link color="primary" href="mailto:filip@ahst.sk">filip@ahst.sk</Link>
 			</Typography>
 		</div>
 	);
